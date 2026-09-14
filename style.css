@@ -67,6 +67,7 @@ h1 {
 
 .destination-heading {
     font-size: 1rem;
+    font-weight: bold;
 }
 
 .destination-text {
@@ -122,3 +123,17 @@ h1 {
 }
 
 /* #endregion destination */
+
+/* #region begge */
+.favorite-button {
+    border: none;
+    background: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.favorite-button.active {
+    color: red;
+}
+
+/* #endregion begge */

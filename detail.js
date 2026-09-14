@@ -1,8 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
-
-console.log(id);
-
+const destinationId = Number(id);
 
 fetch(`data/${id}.json`)
     .then(function (response) {
@@ -16,6 +14,39 @@ fetch(`data/${id}.json`)
         const imageElement = document.createElement("img");
         imageElement.src = `img/${data.image}`;
         imageElement.classList.add("image");
+
+        let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+        const favoriteButton = document.createElement("button");
+        favoriteButton.textContent = "♡";
+        favoriteButton.classList.add("favorite-button");
+
+        if (favorites.includes(destinationId)) {
+            favoriteButton.textContent = "♥";
+            favoriteButton.classList.add("active");
+        }
+
+        favoriteButton.addEventListener("click", function () {
+
+            if (favorites.includes(destinationId)) {
+
+                favorites = favorites.filter(function (favoriteId) {
+                    return favoriteId !== destinationId;
+                });
+
+                favoriteButton.textContent = "♡";
+                favoriteButton.classList.remove("active");
+
+            } else {
+
+                favorites.push(destinationId);
+
+                favoriteButton.textContent = "♥";
+                favoriteButton.classList.add("active");
+            }
+
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+        });
 
         const sectionElement = document.createElement("section");
         sectionElement.classList.add("section-text");
@@ -61,6 +92,7 @@ fetch(`data/${id}.json`)
 
 
         sectionElement.append(
+            favoriteButton,
             destinationElement,
             titleElement,
             subtitleElement,
