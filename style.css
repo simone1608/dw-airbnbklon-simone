@@ -76,4 +76,49 @@ h1 {
 /* #endregion index */
 
 /* #region destination */
+.destination-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin: 1rem;
+    align-items: center;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.section-text {
+    margin: 4rem 2rem;
+}
+
+.destination {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.title {
+    margin: 0.5rem 0;
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: normal;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.text {
+    margin-bottom: 1.5rem;
+}
+
+.facilities-title {
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
 /* #endregion destination */
