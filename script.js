@@ -7,13 +7,14 @@ fetch("data/destinations.json")
         // console.log(data.destinations[0]);
 
         data.destinations.forEach(function (destination) {
-            const divElement = document.createElement("div");
-            divElement.classList.add("destination-card");
+            const cardElement = document.createElement("a");
+            cardElement.classList.add("destination-card");
+            cardElement.href = `destination.html?id=${destination.id}`;
 
             document.querySelector(".destinations")
 
                 .append(
-                    divElement
+                    cardElement
                 );
 
             const imgElement = document.createElement("img");
@@ -28,7 +29,7 @@ fetch("data/destinations.json")
             destinationText.textContent = destination.destination;
             destinationText.classList.add("destination-text")
 
-            divElement.append(
+            cardElement.append(
                 imgElement,
                 headingElement,
                 destinationText
